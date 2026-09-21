@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>HyperLock — политика конфиденциальности</title>
+  <style>
+    body{font-family:sans-serif;line-height:1.45;padding:12px 14px;color:#111;max-width:720px;margin:0 auto}
+    h1{font-size:1.15rem}
+    h2{font-size:1rem;margin-top:1.2em}
+    p,li{margin:0.5em 0}
+    ul{padding-left:1.2em}
+    .muted{color:#444;font-size:0.9rem}
+    hr{border:none;border-top:1px solid #ccc;margin:1.5em 0}
+    code{font-size:0.9em}
+  </style>
+</head>
+<body>
+  <h1>Политика конфиденциальности</h1>
+  <p class="muted"><strong>Версия:</strong> 2026-07-18 · <strong>Приложение:</strong> HyperLock (кастомный экран блокировки и AOD-имитация) · <strong>Package:</strong> com.hyperlockscreen.app</p>
+  <p>Эта политика описывает, как приложение обрабатывает информацию на вашем устройстве. HyperLock <strong>не заменяет</strong> системную блокировку Android; после снятия кастомного слоя остаются PIN, пароль или биометрия устройства.</p>
+
+  <h2>1. Кратко</h2>
+  <ul>
+    <li>Мы <strong>не продаём</strong> ваши данные и <strong>не ведём</strong> облачный аккаунт HyperLock.</li>
+    <li>В версии v1 <strong>нет</strong> рекламных SDK, подписок и in-app покупок.</li>
+    <li>Большая часть данных хранится <strong>только на устройстве</strong> и не передаётся на наши серверы (серверов приложения нет).</li>
+    <li>Автоматическое облачное резервное копирование Android для данных приложения <strong>отключено</strong> (<code>allowBackup=false</code>).</li>
+  </ul>
+
+  <h2>2. Какие данные обрабатываются на устройстве</h2>
+  <p><strong>Настройки приложения</strong> (включение кастомного замка, выбранный пресет, параметры UX, флаги онбординга, согласие на «советы дня») — только в локальном хранилище на устройстве.</p>
+  <p><strong>Опциональный PIN или паттерн приложения</strong> — только для снятия кастомного слоя; хранится как защищённый хеш в зашифрованном хранилище Android. Сырой PIN/паттерн не сохраняется.</p>
+  <p><strong>Обои</strong>, которые вы выбираете сами, — сохраняются в памяти приложения на устройстве; мы не загружаем их на сервер.</p>
+  <p><strong>Уведомления на кастомном замке</strong> (опционально): если вы включите список уведомлений и выдадите системный доступ «Прослушивание уведомлений», приложение читает активные уведомления через API Android и показывает их на экране замка. Содержимое обрабатывается на устройстве; режим «Приватность на замке» может скрывать текст. Мы не отправляем тексты уведомлений на наш сервер.</p>
+  <p><strong>Локальная аналитика</strong>: счётчики событий (например, завершение онбординга, настройка разрешений, включение замка) и короткие атрибуты без персональных данных — только в локальном хранилище на устройстве и в отладочный лог при разработке. Внешний SDK аналитики не используется.</p>
+  <p><strong>Локальные отчёты о сбоях</strong> (v1): при необработанном исключении сохраняется минимальный снимок (тип ошибки, имя потока, время, модель/OEM, версия API, версия приложения; сообщение обрезается до 300 символов) в локальном хранилище; при следующем запуске запись выводится в локальный лог и удаляется. <strong>Не передаётся</strong> разработчику автоматически. После публикации в Google Play доступны агрегированные отчёты <strong>Play Vitals</strong> (сервис Google).</p>
+
+  <h2>3. Разрешения Android</h2>
+  <ul>
+    <li><strong>«Поверх других приложений»</strong> — для показа кастомного полноэкранного слоя (совместно с foreground-сервисом).</li>
+    <li><strong>Уведомления приложения (Android 13+)</strong> — для постоянного уведомления foreground-сервиса замка и опциональных «советов дня».</li>
+    <li><strong>Доступ к уведомлениям (Notification Listener)</strong> — только если вы включите список на замке.</li>
+    <li><strong>Foreground service (special use)</strong> — удержание кастомного замка, пока функция включена.</li>
+    <li><strong>Загрузка после перезагрузки</strong> — восстановление сервиса, если замок был включён.</li>
+    <li><strong>Исключение из оптимизации батареи</strong> — по вашему запросу через системный диалог (стабильность на OEM).</li>
+    <li><strong>Камера</strong> — только для шортката «фонарик» на экране замка (при использовании).</li>
+  </ul>
+
+  <h2>4. Сервисы Google Play (не наши серверы)</h2>
+  <ul>
+    <li><strong>In-app updates</strong> — проверка обновлений через Google Play.</li>
+    <li><strong>Play Integrity API</strong> — опциональная проверка целостности клиента без блокировки функций (probe).</li>
+    <li><strong>Play Vitals</strong> — после публикации Google может предоставлять агрегированную статистику сбоев разработчику в консоли.</li>
+  </ul>
+
+  <h2>5. Передача третьим лицам</h2>
+  <p>В сборке v1 мы <strong>не передаём</strong> персональные данные пользователя рекламным сетям, брокерам данных или собственным backend-серверам. Данные уведомлений и настроек остаются на устройстве, кроме случаев, когда вы сами делитесь информацией через другие приложения.</p>
+  <p>Если в будущих версиях будет подключён Firebase Crashlytics или иной SDK, эта политика и форма Data Safety в Google Play будут обновлены <strong>до</strong> выпуска такой версии.</p>
+
+  <h2>6. Хранение, шифрование, удаление</h2>
+  <p>Конфиденциальные данные приложения (хеш PIN/паттерна) защищены механизмами Android. Облачный бэкап приложения отключён.</p>
+  <p><strong>Удаление данных:</strong> «Настройки Android → Приложения → HyperLock → Очистить данные» или удаление приложения удаляет локальные настройки, хеш PIN/паттерна, обои, локальную аналитику и локальные снимки сбоев. Системная блокировка устройства не затрагивается.</p>
+
+  <h2>7. Дети</h2>
+  <p>Приложение не предназначено для целенаправленного сбора данных детей младше возраста, требующего согласия родителей по местному праву.</p>
+
+  <h2>8. Изменения и контакты</h2>
+  <p>Мы можем обновлять политику; дата версии указана в начале. Актуальная публичная копия для Google Play доступна по HTTPS по ссылке из карточки приложения в магазине.</p>
+  <p>Контакт поддержки: через страницу приложения в Google Play после публикации (укажите актуальный email в консоли).</p>
+
+  <hr/>
+  <h1 lang="en">Privacy policy (English)</h1>
+  <p class="muted" lang="en"><strong>Version:</strong> 2026-07-18 · <strong>App:</strong> HyperLock (custom lock screen layer &amp; AOD imitation) · <strong>Package:</strong> com.hyperlockscreen.app</p>
+  <p lang="en">This policy describes how the app handles information on your device. HyperLock <strong>does not replace</strong> Android&apos;s system lock; after you dismiss the custom layer, your device PIN, password, or biometrics still apply.</p>
+
+  <h2 lang="en">1. Summary</h2>
+  <ul lang="en">
+    <li>We do <strong>not sell</strong> your data and do <strong>not</strong> operate a HyperLock cloud account.</li>
+    <li>v1 has <strong>no</strong> ad SDKs, subscriptions, or in-app purchases.</li>
+    <li>Most data stays <strong>on-device only</strong> and is not sent to our servers (we have no app backend).</li>
+    <li>Android cloud backup for app data is <strong>disabled</strong> (<code>allowBackup=false</code>).</li>
+  </ul>
+
+  <h2 lang="en">2. On-device processing</h2>
+  <p lang="en"><strong>App settings</strong> (lock toggle, preset, UX flags, onboarding, optional daily tips opt-in) — stored only in on-device local storage.</p>
+  <p lang="en"><strong>Optional app PIN or pattern</strong> — only to dismiss the custom layer; stored as a protected hash in Android encrypted storage. Plaintext secrets are never saved.</p>
+  <p lang="en"><strong>Wallpapers</strong> you pick — saved locally; not uploaded to our servers.</p>
+  <p lang="en"><strong>Lock-screen notifications</strong> (optional): if you enable the list and grant Notification Listener access, the app reads active notifications via Android APIs and shows them on the lock layer. Content is processed on-device; privacy mode can hide text. We do not send notification content to our servers.</p>
+  <p lang="en"><strong>Local analytics</strong>: event counters (e.g. onboarding, permission setup, lock toggle) and short non-PII attributes — on-device local storage and debug logs only. No external analytics SDK.</p>
+  <p lang="en"><strong>Local crash snapshots</strong> (v1): on uncaught exceptions, a minimal snapshot (exception type, thread name, timestamp, OEM/model, API level, app version; message truncated to 300 chars) is saved locally, logged on next launch, then cleared. <strong>Not</strong> auto-sent to the developer. After Play publication, <strong>Play Vitals</strong> may provide aggregated crash data via Google.</p>
+
+  <h2 lang="en">3. Android permissions</h2>
+  <ul lang="en">
+    <li><strong>Display over other apps</strong> — custom full-screen lock layer (with foreground service).</li>
+    <li><strong>Post notifications (Android 13+)</strong> — persistent lock service notification; optional daily tips.</li>
+    <li><strong>Notification listener</strong> — only if you enable notifications on the lock layer.</li>
+    <li><strong>Foreground service (special use)</strong> — keeps the custom lock active while enabled.</li>
+    <li><strong>Boot completed</strong> — restores the service after reboot if lock was on.</li>
+    <li><strong>Battery optimization exemption</strong> — only when you accept the system dialog (OEM stability).</li>
+    <li><strong>Camera</strong> — flashlight shortcut on the lock screen when used.</li>
+  </ul>
+
+  <h2 lang="en">4. Google Play services (not our servers)</h2>
+  <ul lang="en">
+    <li><strong>In-app updates</strong> — update checks via Google Play.</li>
+    <li><strong>Play Integrity API</strong> — optional client integrity probe without feature gating.</li>
+    <li><strong>Play Vitals</strong> — aggregated crash metrics in Play Console after publication.</li>
+  </ul>
+
+  <h2 lang="en">5. Third parties</h2>
+  <p lang="en">In v1 we do <strong>not</strong> share personal user data with ad networks, data brokers, or our own backends. Notification and settings data remain on-device unless you share it elsewhere yourself.</p>
+  <p lang="en">If Firebase Crashlytics or other SDKs are added later, this policy and Play Data Safety will be updated <strong>before</strong> that release.</p>
+
+  <h2 lang="en">6. Retention, encryption, deletion</h2>
+  <p lang="en">App lock credentials (PIN/pattern hash) use Android encryption. Cloud backup is disabled.</p>
+  <p lang="en"><strong>Delete data:</strong> Android Settings → Apps → HyperLock → Clear storage, or uninstall — removes local settings, PIN/pattern hash, wallpapers, local analytics, and local crash snapshots. System device lock is unchanged.</p>
+
+  <h2 lang="en">7. Children</h2>
+  <p lang="en">The app is not designed to knowingly collect data from children requiring parental consent under applicable law.</p>
+
+  <h2 lang="en">8. Changes &amp; contact</h2>
+  <p lang="en">We may update this policy; version date is at the top. The current public HTTPS copy is linked from the app&apos;s Google Play store listing.</p>
+  <p lang="en">Support contact: via the app&apos;s Google Play listing after publication (set the support email in Play Console).</p>
+</body>
+</html>
