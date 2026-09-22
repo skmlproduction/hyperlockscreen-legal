@@ -17,13 +17,14 @@
 </head>
 <body>
   <h1>Политика конфиденциальности</h1>
-  <p class="muted"><strong>Версия:</strong> 2026-07-18 · <strong>Приложение:</strong> HyperLock (кастомный экран блокировки и AOD-имитация) · <strong>Package:</strong> com.hyperlockscreen.app</p>
+  <p class="muted"><strong>Версия:</strong> 2026-09-22 · <strong>Приложение:</strong> HyperLock (кастомный экран блокировки и AOD-имитация) · <strong>Package:</strong> com.hyperlockscreen.app</p>
   <p>Эта политика описывает, как приложение обрабатывает информацию на вашем устройстве. HyperLock <strong>не заменяет</strong> системную блокировку Android; после снятия кастомного слоя остаются PIN, пароль или биометрия устройства.</p>
 
   <h2>1. Кратко</h2>
   <ul>
     <li>Мы <strong>не продаём</strong> ваши данные и <strong>не ведём</strong> облачный аккаунт HyperLock.</li>
-    <li>В версии v1 <strong>нет</strong> рекламных SDK, подписок и in-app покупок.</li>
+    <li>Приложение показывает <strong>рекламный баннер</strong> (медиация CAS.AI / CleverAdsSolutions) только на главном экране приложения. На кастомном экране блокировки и в AOD-режиме рекламы <strong>нет</strong>.</li>
+    <li>Нет подписок и in-app покупок.</li>
     <li>Большая часть данных хранится <strong>только на устройстве</strong> и не передаётся на наши серверы (серверов приложения нет).</li>
     <li>Автоматическое облачное резервное копирование Android для данных приложения <strong>отключено</strong> (<code>allowBackup=false</code>).</li>
   </ul>
@@ -54,8 +55,10 @@
     <li><strong>Play Vitals</strong> — после публикации Google может предоставлять агрегированную статистику сбоев разработчику в консоли.</li>
   </ul>
 
-  <h2>5. Передача третьим лицам</h2>
-  <p>В сборке v1 мы <strong>не передаём</strong> персональные данные пользователя рекламным сетям, брокерам данных или собственным backend-серверам. Данные уведомлений и настроек остаются на устройстве, кроме случаев, когда вы сами делитесь информацией через другие приложения.</p>
+  <h2>5. Реклама и передача третьим лицам</h2>
+  <p>Приложение использует рекламную медиацию <strong>CAS.AI (CleverAdsSolutions)</strong> для показа баннера на главном экране приложения. Реклама <strong>не показывается</strong> на кастомном экране блокировки и в AOD-режиме.</p>
+  <p>При первом запуске CAS.AI показывает системный диалог согласия (consent flow). Только после вашего согласия рекламный SDK может получать <strong>Advertising ID</strong> и показывать персонализированную рекламу; без согласия показывается неперсонализированная реклама. CAS.AI и её рекламные партнёры могут обрабатывать Advertising ID, IP-адрес и технические данные устройства в целях показа и измерения рекламы. Подробности — в политике CAS.AI: <code>https://cas.ai/privacy</code>.</p>
+  <p>Мы <strong>не передаём</strong> рекламным сетям содержимое ваших уведомлений, настроек, PIN/паттерна или обоев — эти данные остаются на устройстве. Собственных backend-серверов у приложения нет.</p>
   <p>Если в будущих версиях будет подключён Firebase Crashlytics или иной SDK, эта политика и форма Data Safety в Google Play будут обновлены <strong>до</strong> выпуска такой версии.</p>
 
   <h2>6. Хранение, шифрование, удаление</h2>
@@ -71,13 +74,14 @@
 
   <hr/>
   <h1 lang="en">Privacy policy (English)</h1>
-  <p class="muted" lang="en"><strong>Version:</strong> 2026-07-18 · <strong>App:</strong> HyperLock (custom lock screen layer &amp; AOD imitation) · <strong>Package:</strong> com.hyperlockscreen.app</p>
+  <p class="muted" lang="en"><strong>Version:</strong> 2026-09-22 · <strong>App:</strong> HyperLock (custom lock screen layer &amp; AOD imitation) · <strong>Package:</strong> com.hyperlockscreen.app</p>
   <p lang="en">This policy describes how the app handles information on your device. HyperLock <strong>does not replace</strong> Android&apos;s system lock; after you dismiss the custom layer, your device PIN, password, or biometrics still apply.</p>
 
   <h2 lang="en">1. Summary</h2>
   <ul lang="en">
     <li>We do <strong>not sell</strong> your data and do <strong>not</strong> operate a HyperLock cloud account.</li>
-    <li>v1 has <strong>no</strong> ad SDKs, subscriptions, or in-app purchases.</li>
+    <li lang="en">The app shows an <strong>ad banner</strong> (CAS.AI / CleverAdsSolutions mediation) on the in-app home screen only. The custom lock screen and AOD mode are <strong>ad-free</strong>.</li>
+    <li lang="en">No subscriptions or in-app purchases.</li>
     <li>Most data stays <strong>on-device only</strong> and is not sent to our servers (we have no app backend).</li>
     <li>Android cloud backup for app data is <strong>disabled</strong> (<code>allowBackup=false</code>).</li>
   </ul>
@@ -108,8 +112,10 @@
     <li><strong>Play Vitals</strong> — aggregated crash metrics in Play Console after publication.</li>
   </ul>
 
-  <h2 lang="en">5. Third parties</h2>
-  <p lang="en">In v1 we do <strong>not</strong> share personal user data with ad networks, data brokers, or our own backends. Notification and settings data remain on-device unless you share it elsewhere yourself.</p>
+  <h2 lang="en">5. Advertising &amp; third parties</h2>
+  <p lang="en">The app uses <strong>CAS.AI (CleverAdsSolutions)</strong> ad mediation to show a banner on the in-app home screen. Ads are <strong>never</strong> shown on the custom lock screen or in AOD mode.</p>
+  <p lang="en">On first launch CAS.AI presents a consent dialog. Only with your consent may the ad SDK access the <strong>Advertising ID</strong> and serve personalized ads; without consent only non-personalized ads are shown. CAS.AI and its ad partners may process the Advertising ID, IP address, and device technical data for ad delivery and measurement. Details: <code>https://cas.ai/privacy</code>.</p>
+  <p lang="en">We do <strong>not</strong> share your notification content, settings, PIN/pattern, or wallpapers with ad networks — that data stays on-device. The app has no backend servers.</p>
   <p lang="en">If Firebase Crashlytics or other SDKs are added later, this policy and Play Data Safety will be updated <strong>before</strong> that release.</p>
 
   <h2 lang="en">6. Retention, encryption, deletion</h2>
